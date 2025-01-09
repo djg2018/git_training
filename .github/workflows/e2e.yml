@@ -1,0 +1,37 @@
+name: E2E Workflow
+
+on:
+ push:
+  branches:
+   - main
+  pull_request:
+   branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+ e2e-tests:
+  runs-on: ubuntu-latest #GitHub-hosted runner
+  steps:
+   #Step 1: Checkout the repository code
+   - name: Checkout Code
+     uses: actions/checkout@v3
+
+   #Step 2: Setup Node.js (if needed for tests)
+   - name: Set up Node.js
+     uses: actions/setup-node@v3
+     with:
+      node-version: '16' # Requied Node.js version
+
+   # Step 3: Install dependencies
+   - name: install Playwright
+     run: npm install --save-dev @playwright/test
+
+   # Step 4: Run end-to-end tests
+   - name: Install Browsers
+     run: npm playwright install
+
+   # Step 5: Upload test results (optionsa_
+   - name: Run E2E Tests
+     run: npx playwright test
+  
