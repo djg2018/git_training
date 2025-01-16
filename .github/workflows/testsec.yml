@@ -1,0 +1,30 @@
+name: Test Secrets and Variables Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_secrets_and_variables:
+    runs-on: ubuntu-latest
+
+    env:
+      STATIC_ENV_VARIABLE: "This is a static environment variable"
+      REPO_LEVEL_VARIABLE: ${{ vars.MY_VARIABLE }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print static environment variable
+        run: echo "Static Variable: $STATIC_ENV_VARIABLE"
+
+      - name: Print repository variable
+        run: echo "Repository Variable: $MY_ENV_VARIABLE"
+
+      - name: Print secret value
+        # NEVER log secrets directly, this is just an example of usage.
+        run: echo "Secret value: $MY_SECRET_KEY"
+        env:
+          MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_API_KEY }}
