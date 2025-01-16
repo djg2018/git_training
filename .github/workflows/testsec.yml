@@ -17,10 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Optional: Uncomment to print static environment variable
-      # - name: Print static environment variable
-      #   run: echo "Static Variable: $STATIC_ENV_VARIABLE"
-
       - name: Print repository variable
         run: echo "Repository Variable: $REPO_LEVEL_VARIABLE"
 
@@ -28,4 +24,4 @@ jobs:
         # NEVER log secrets directly, this is just an example of usage.
         run: echo "Secret value: $MY_SECRET_API_KEY"
         env:
-          MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_API_KEY }}
+          MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_KEY }}
