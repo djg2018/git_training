@@ -28,3 +28,4 @@ jobs:
         run: echo "Secret value: $MY_SECRET_KEY"
         env:
           MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_API_KEY }}
+          # test the changes
