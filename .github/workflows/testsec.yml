@@ -17,8 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print static environment variable
-        run: echo "Static Variable: $STATIC_ENV_VARIABLE"
+     # - name: Print static environment variable
+     #   run: echo "Static Variable: $STATIC_ENV_VARIABLE"
 
       - name: Print repository variable
         run: echo "Repository Variable: $MY_ENV_VARIABLE"
