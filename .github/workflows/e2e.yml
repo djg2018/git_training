@@ -1,9 +1,11 @@
 name: E2E Workflow
 
-on:
+off:
  push:
   branches:
    - main
+  branches-ignore:
+      - feature/testsec
   pull_request:
    branches:
     - main
