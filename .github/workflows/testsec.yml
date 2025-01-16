@@ -18,10 +18,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Print repository variable
-        run: echo "Repository Variable: $REPO_LEVEL_VARIABLE"
+        run: echo "Repository Variable:$REPO_LEVEL_VARIABLE"
 
       - name: Print secret value
         # NEVER log secrets directly, this is just an example of usage.
-        run: echo "Secret value: $MY_SECRET_API_KEY"
+        run: echo "Secret value:$MY_SECRET_API_KEY"
         env:
           MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_KEY }}
