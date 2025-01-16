@@ -11,7 +11,7 @@ jobs:
 
     env:
       STATIC_ENV_VARIABLE: "This is a static environment variable"
-      REPO_LEVEL_VARIABLE: ${{ vars.MY_VARIABLE }}
+      REPO_LEVEL_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}
 
     steps:
       - name: Checkout code
