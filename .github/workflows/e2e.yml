@@ -1,6 +1,6 @@
 name: E2E Workflow
 
-off:
+on:
  push:
   branches:
    - main
