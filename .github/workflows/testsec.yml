@@ -1,4 +1,4 @@
-name: Test Secrets and Variables Workflow
+name: Test AWS Credentials
 
 on:
   push:
@@ -6,22 +6,15 @@ on:
       - main
 
 jobs:
-  test_secrets_and_variables:
+  test-aws:
     runs-on: ubuntu-latest
-
-    env:
-      STATIC_ENV_VARIABLE: "This is a static environment variable"
-      REPO_LEVEL_VARIABLE: ${{ vars.MY_ENV_VARIABLE }}
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
 
-      - name: Print repository variable
-        run: echo "Repository Variable:$REPO_LEVEL_VARIABLE"
-
-      - name: Print secret value
-        # NEVER log secrets directly, this is just an example of usage.
-        run: echo "Secret value:$MY_SECRET_API_KEY"
-        env:
-          MY_SECRET_API_KEY: ${{ secrets.MY_SECRET_KEY }}
+    - name: Test AWS CLI
+      run: aws s3 ls
